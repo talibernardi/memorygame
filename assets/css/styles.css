@@ -1,0 +1,80 @@
+.card {
+    background-image: url(../imgs/vetor.jpg);
+    height: 108px;
+    width: 108px;
+    border-radius: 14px;
+    background-size: 600px;
+    background-repeat: no-repeat;
+}
+
+.first-card, .orange, .avocado, .kiwi, .watermelon, .pumpikin, .pear, .lemon, .grape  {
+    background-position-y: -50px;
+}
+
+.orange {
+    background-position-x: -59px;
+}
+
+.avocado {
+    background-position-x: -184px;
+}
+
+.kiwi {
+    background-position-x: -309px;
+}
+
+.pumpkin {
+    background-position-y: -180px;
+    background-position-x: -59px;
+}
+
+.pear {
+    background-position-x: -184px;
+    background-position-y: -442px;
+}
+
+.lemon {
+    background-position-x: -433px;
+    background-position-y: -442px;
+}
+
+.grape {
+    background-position-y: -442px;
+    background-position-x: -60px;
+}
+
+.watermelon {
+    background-position-y: -312px;
+    background-position-x: -59px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #f4c531;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    width: 26.87em;
+    padding: 2.5em 3em;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 0.6em;
+    box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    display: grid;
+}
+
