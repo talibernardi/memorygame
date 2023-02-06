@@ -3,20 +3,14 @@ const timeValue = document.getElementById("time");
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const gameContainer = document.querySelector(".game-container");
+const result = document.getElementById("result");
+const controls = document.querySelector(".controls-container")
 let cards;
 let interval;
 let firstCard = false;
 let secondCard = false;
 
 const items = [
-    { name: 'Orange', class: 'orange' },
-    { name: 'Avocado', class: 'avocado' },
-    { name: 'Kiwi', class: 'kiwi' },
-    { name: 'Watermelon', class: 'watermelon' },
-    { name: 'Pumpkin', class: 'pumpkin' },
-    { name: 'Pear', class: 'pear' },
-    { name: 'Lemon', class: 'lemon' },
-    { name: 'Grape', class: 'grape' },
     { name: 'Orange', class: 'orange' },
     { name: 'Avocado', class: 'avocado' },
     { name: 'Kiwi', class: 'kiwi' },
@@ -83,7 +77,53 @@ const matrixGenerator = (cardValues, size = 4) => {
         </div>`;
     }
     gameContainer.style.gridTemplateColumns = `repeat(${size},auto)`;
+
+    cards = document.querySelectorAll(".card-container");
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            if (!card.classList.contains("matched")) {
+                card.classList.add("flipped");
+                if (!firstCard) {
+                    firstCardValue = card.getAttribute("data-card-value");
+                }
+                else {
+                    movesCounter();
+                    secondCard = card;
+                    let secondCardValue = card.getAttribute("data-card-value");
+                    if (firstCardValue == secondCardValue) {
+                        firstCard.classList.add("matched");
+                        secondCard.classList.add("matched");
+    
+                        firstCard = false;
+                        winCount += 1;
+    
+                        if (winCount == Math.floor(cardValues.length / 2)) {
+                            result.innerHTML = `<2>Parabéns, você ganhou!</h2>
+                            <h4>Moves: ${movesCount}</h4>`;
+                            stopGame();
+                        }
+                } else {
+                        let [tempFirst, tempSecond] = [firstCard, secondCard];
+                        firstCard = false;
+                        secondCard = false;
+                        let delay = setTimeout(() => {
+                            tempFirst.classList.remove("flipped");
+                            tempSecond.classList.remove("flipped");
+                        }, 900);
+                    }
+                }
+            }
+        });
+    });
 };
+
+startButton.addEventListener("click", () => {
+    movesCount = 0;
+    time = 0;
+    controls.classList.add("hide");
+    stopButton.classList.remove("hide");
+    startButton.classList.add("hide");
+})
 
 //init values and func calls
 const initializer = () => {
