@@ -84,6 +84,7 @@ const matrixGenerator = (cardValues, size = 4) => {
             if (!card.classList.contains("matched")) {
                 card.classList.add("flipped");
                 if (!firstCard) {
+                    firstCard = card;
                     firstCardValue = card.getAttribute("data-card-value");
                 }
                 else {
@@ -98,7 +99,7 @@ const matrixGenerator = (cardValues, size = 4) => {
                         winCount += 1;
     
                         if (winCount == Math.floor(cardValues.length / 2)) {
-                            result.innerHTML = `<2>Parabéns, você ganhou!</h2>
+                            result.innerHTML = `<h2>Parabéns, você ganhou!</h2>
                             <h4>Moves: ${movesCount}</h4>`;
                             stopGame();
                         }
@@ -123,7 +124,20 @@ startButton.addEventListener("click", () => {
     controls.classList.add("hide");
     stopButton.classList.remove("hide");
     startButton.classList.add("hide");
-})
+    interval = setInterval(timerGenerator, 1000);
+    moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+    initializer();
+});
+
+stopButton.addEventListener(
+    "click", 
+    (stopGame = () => {
+        controls.classList.remove("hide");
+        stopButton.classList.add("hide");
+        startButton.classList.remove("hide");
+        clearInterval(interval);
+    })
+);
 
 //init values and func calls
 const initializer = () => {

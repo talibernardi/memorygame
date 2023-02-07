@@ -78,6 +78,15 @@ body {
     gap: 0.6em;
 }
 
+.status-container {
+    text-align: right;
+    margin-bottom: 1.2em;
+}
+
+.status-container span {
+    font-weight: 600;
+}
+
 .card-container {
     position: relative;
     width: 6.25em;
@@ -109,11 +118,11 @@ body {
     transform: rotateY(180deg);
 }
 
-.card-container.flipper.card-before {
+.card-container.flipped .card-before {
     transform: rotateY(180deg);
 }
 
-.card-container.flipper.card-after {
+.card-container.flipped .card-after {
     transform: rotateY(0deg);
 }
 
@@ -151,4 +160,17 @@ button {
 
 .hide{
     display: none;
+}
+
+#result {
+    text-align:center;
+}
+
+#result h2 {
+    font-size: 2.5em;
+}
+
+#result h4 {
+    font-size: 1.8em;
+    margin: 0.6em 0 1em 0;
 }
