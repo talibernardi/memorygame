@@ -1,3 +1,50 @@
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml8 .circle-white',
+    scale: [0, 3],
+    opacity: [1, 0],
+    easing: "easeInOutExpo",
+    rotateZ: 360,
+    duration: 1100
+  }).add({
+    targets: '.ml8 .circle-container',
+    scale: [0, 1],
+    duration: 1100,
+    easing: "easeInOutExpo",
+    offset: '-=1000'
+  }).add({
+    targets: '.ml8 .circle-dark',
+    scale: [0, 1],
+    duration: 1100,
+    easing: "easeOutExpo",
+    offset: '-=600'
+  }).add({
+    targets: '.ml8 .letters-left',
+    scale: [0, 1],
+    duration: 1200,
+    offset: '-=550'
+  }).add({
+    targets: '.ml8 .bang',
+    scale: [0, 1],
+    rotateZ: [45, 15],
+    duration: 1200,
+    offset: '-=1000'
+  }).add({
+    targets: '.ml8',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1400
+  });
+
+anime({
+  targets: '.ml8 .circle-dark-dashed',
+  rotateZ: 360,
+  duration: 8000,
+  easing: "linear",
+  loop: true
+});
+
 const moves = document.getElementById("moves-count");
 const timeValue = document.getElementById("time");
 const startButton = document.getElementById("start");
@@ -81,7 +128,7 @@ const matrixGenerator = (cardValues, size = 4) => {
     cards = document.querySelectorAll(".card-container");
     cards.forEach((card) => {
         card.addEventListener("click", () => {
-            if (!card.classList.contains("matched")) {
+            if (!card.classList.contains("matched") && !card.classList.contains("flipped")) {
                 card.classList.add("flipped");
                 if (!firstCard) {
                     firstCard = card;
@@ -100,7 +147,7 @@ const matrixGenerator = (cardValues, size = 4) => {
     
                         if (winCount == Math.floor(cardValues.length / 2)) {
                             result.innerHTML = `<h2>Parabéns, você ganhou!</h2>
-                            <h4>Moves: ${movesCount}</h4>`;
+                            <h4>Quantidade de Jogadas: ${movesCount}</h4>`;
                             stopGame();
                         }
                 } else {

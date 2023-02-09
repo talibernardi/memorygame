@@ -1,51 +1,120 @@
+h1.ml8 {
+    font-weight: 800;
+    font-size: 5.5em;
+    color: #fff;
+    width: 3em;
+    height: 4em;
+  }
+  
+  .ml8 .letters-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    height: 1em;
+  }
+  
+  .ml8 .letters {
+    font-family: 'Nabla', cursive !important;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    line-height: 0.7em;
+    right: -0.12em;
+    top: -1.1em;
+  }
+  
+  .ml8 .bang {
+    font-size: 1.4em;
+    top: auto;
+    left: -0.06em;
+    bottom: 48px;
+  }
+  
+  .ml8 .circle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 134px;
+  }
+  
+  .ml8 .circle-white {
+    width: 2em;
+    height: 2em;
+    border: 2px dashed white;
+    border-radius: 2em;
+    bottom: 267px;
+  }
+  
+  .ml8 .circle-dark {
+    width: 4em;
+    height: 4em;
+    background-color: #588996;
+    border-radius: 3em;
+    z-index: 1;
+    bottom: 267px;
+  }
+  
+  .ml8 .circle-dark-dashed {
+    border-radius: 2.4em;
+    background-color: transparent;
+    border: 2px dashed #588996;
+    width: 4.4em;
+    height: 4.4em;
+  }
+
 .card {
     background-image: url(../imgs/vetor.jpg);
     height: 108px;
     width: 108px;
     border-radius: 14px;
-    background-size: 600px;
+    background-size: 555px;
     background-repeat: no-repeat;
 }
 
 .first-card, .orange, .avocado, .kiwi, .watermelon, .pumpikin, .pear, .lemon, .grape  {
-    background-position-y: -50px;
+    background-position-y: -45px;
 }
 
 .orange {
-    background-position-x: -59px;
+    background-position-x: -55px;
 }
 
 .avocado {
-    background-position-x: -184px;
+    background-position-x: -170px;
 }
 
 .kiwi {
-    background-position-x: -309px;
+    background-position-x: -285px;
 }
 
 .pumpkin {
-    background-position-y: -180px;
-    background-position-x: -59px;
+    background-position-y: -166px;
+    background-position-x: -55px;
 }
 
 .pear {
-    background-position-x: -184px;
-    background-position-y: -442px;
+    background-position-x: -170px;
+    background-position-y: -406px;
 }
 
 .lemon {
-    background-position-x: -433px;
-    background-position-y: -442px;
+    background-position-x: -401px;
+    background-position-y: -407px;
 }
 
 .grape {
-    background-position-y: -442px;
-    background-position-x: -60px;
+    background-position-y: -406px;
+    background-position-x: -55px;
 }
 
 .watermelon {
-    background-position-y: -312px;
-    background-position-x: -59px;
+    background-position-y: -286px;
+    background-position-x: -54px;
 }
 
 * {
@@ -151,6 +220,10 @@ button {
     margin: 1.1em auto 0 auto;
     background-color: #000000;
     color: #ffffff;
+}
+
+#start {
+    color: #588996;
 }
 
 .controls-container button {
