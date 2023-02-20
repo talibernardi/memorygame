@@ -152,8 +152,8 @@ const matrixGenerator = (cardValues, size = 4) => {
 
                         if (winCount == 8) {
                             result.innerHTML = `<h2>Parabéns, você ganhou!</h2>
-                            <h4>Quantidade de Jogadas: ${movesCount}</h4>
-                            <h4>sua pontuação é: ${calcPercent()}</h4>`;
+                            <h5>Quantidade de Jogadas: ${movesCount}</h5>
+                            <h5>sua pontuação é: ${calcPercent()}</h5>`;
                             controls.classList.remove("hide");
                             pauseButton.classList.add("hide");
                             startButton.classList.remove("hide");
@@ -200,6 +200,7 @@ restartButton.addEventListener(
         controls.classList.remove("hide");
         pauseButton.classList.add("hide");
         startButton.classList.remove("hide");
+        minutes = 0;
         seconds = 0;
         interval = clearInterval(interval);
         interval = setInterval(timerGenerator, 1000);
