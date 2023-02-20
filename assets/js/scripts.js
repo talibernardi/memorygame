@@ -48,7 +48,8 @@ anime({
 const moves = document.getElementById("moves-count");
 const timeValue = document.getElementById("time");
 const startButton = document.getElementById("start");
-const stopButton = document.getElementById("stop");
+const pauseButton = document.getElementById("pause");
+const restartButton = document.getElementById("restart");
 const gameContainer = document.querySelector(".game-container");
 const result = document.getElementById("result");
 const controls = document.querySelector(".controls-container")
@@ -92,6 +93,10 @@ const timerGenerator = () => {
 const movesCounter = () => {
     movesCount += 1;
     moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+};
+
+function calcPercent() {
+    return parseInt(8/movesCount*100)
 };
 
 //randomize cards
@@ -144,11 +149,14 @@ const matrixGenerator = (cardValues, size = 4) => {
     
                         firstCard = false;
                         winCount += 1;
-    
-                        if (winCount == Math.floor(cardValues.length / 2)) {
+
+                        if (winCount == 8) {
                             result.innerHTML = `<h2>Parabéns, você ganhou!</h2>
-                            <h4>Quantidade de Jogadas: ${movesCount}</h4>`;
-                            stopGame();
+                            <h4>Quantidade de Jogadas: ${movesCount}</h4>
+                            <h4>sua pontuação é: ${calcPercent()}</h4>`;
+                            controls.classList.remove("hide");
+                            pauseButton.classList.add("hide");
+                            startButton.classList.remove("hide");
                         }
                 } else {
                         let [tempFirst, tempSecond] = [firstCard, secondCard];
@@ -169,20 +177,32 @@ startButton.addEventListener("click", () => {
     movesCount = 0;
     time = 0;
     controls.classList.add("hide");
-    stopButton.classList.remove("hide");
+    pauseButton.classList.remove("hide");
     startButton.classList.add("hide");
-    interval = setInterval(timerGenerator, 1000);
     moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
     initializer();
+
+    seconds = 0;
+    interval = clearInterval(interval);
+    interval = setInterval(timerGenerator, 1000);
 });
 
-stopButton.addEventListener(
+pauseButton.addEventListener(
     "click", 
     (stopGame = () => {
+        interval = clearInterval(interval);
+    })
+);
+
+restartButton.addEventListener(
+    "click", 
+    (() => {
         controls.classList.remove("hide");
-        stopButton.classList.add("hide");
+        pauseButton.classList.add("hide");
         startButton.classList.remove("hide");
-        clearInterval(interval);
+        seconds = 0;
+        interval = clearInterval(interval);
+        interval = setInterval(timerGenerator, 1000);
     })
 );
 

@@ -224,6 +224,7 @@ button {
 
 #start {
     color: #588996;
+    z-index: 1;
 }
 
 .controls-container button {
